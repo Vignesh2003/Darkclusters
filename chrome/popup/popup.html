@@ -1,0 +1,116 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 8px;
+            width: 300px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 0.85em;
+            background-color: rgb(154, 180, 243);
+        }
+
+    </style>
+    <script type="module" src="popup.js"></script>
+</head>
+
+<body>
+    <extension-popup></extension-popup>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="stylee.css" />
+</head>
+<body>
+    <!-- <button id="detectCostBtn">Detect Cost</button> -->
+    <script src="popup.js"></script>
+  <div class="darkcluster">
+    <div class="overlap-wrapper">
+      <div class="component"><img class="component-variant" src="images/group-12@2x.png" /><img class="ic-round-navigate" src="img/component-1-variant3.svg" /></div>
+      <div class="overlap">
+        <img class="ic-round-navigate" src="images/component-1-variant3.svg" /> <!-- Uncomment this line -->
+        <div class="ellipse"></div>
+        <div class="frame"><img class="dark-clusters" src="images/darkclusters.png" /></div>
+        <div class="div">
+          <div class="overlap-group">
+            <div class="overlap-group-wrapper">
+              <div class="overlap-group-2">
+                <img class="vector" src="images/vector-3.svg" />
+                <div class="text-wrapper">FAKE URGENCY</div>
+              </div>
+            </div>
+            <div class="text-wrapper-2">12</div>
+          </div>
+          <div class="overlap-2">
+            <div class="text-wrapper-3">4</div>
+            <img class="img" src="images/vector-2.svg" />
+            <div class="text-wrapper-4">FAKE REVIEWS</div>
+          </div>
+          <div class="overlap-3">
+            <div class="text-wrapper-5">2</div>
+            <img class="vector-2" src="images/vector-1.svg" />
+            <div class="text-wrapper-6">SCARCITY</div>
+          </div>
+          <div class="overlap-4">
+            <div class="text-wrapper-7">3</div>
+            <img class="vector-3" src="images/vector.svg" />
+            <div class="text-wrapper-8">HIDDEN COST</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to detect dark patterns
+    function detectDarkPatterns() {
+        // Get the counts of detected dark patterns from the HTML elements
+        const fakeUrgencyCount = parseInt(document.querySelector('.text-wrapper-2').textContent);
+        const fakeReviewsCount = parseInt(document.querySelector('.text-wrapper-3').textContent);
+        const scarcityCount = parseInt(document.querySelector('.text-wrapper-5').textContent);
+        const hiddenCostCount = parseInt(document.querySelector('.text-wrapper-7').textContent);
+
+        // Calculate the thresholds dynamically based on certain criteria
+        const fakeUrgencyThreshold = calculateThreshold(fakeUrgencyCount);
+        const fakeReviewsThreshold = calculateThreshold(fakeReviewsCount);
+        const scarcityThreshold = calculateThreshold(scarcityCount);
+        const hiddenCostThreshold = calculateThreshold(hiddenCostCount);
+
+        // Check if any dark pattern count exceeds the threshold
+        if (fakeUrgencyCount >= fakeUrgencyThreshold || fakeReviewsCount >= fakeReviewsThreshold ||
+            scarcityCount >= scarcityThreshold || hiddenCostCount >= hiddenCostThreshold) {
+            alert('This website may be using dark patterns!');
+        }
+    }
+
+    // Function to calculate the threshold dynamically based on the count
+    function calculateThreshold(count) {
+        // Define the logic to determine the threshold dynamically
+        // For example, you can use a formula or adjust it based on user settings
+        // Here, we use a simple logic to calculate the threshold dynamically
+        if (count <= 10) {
+            return 5;
+        } else if (count <= 20) {
+            return 10;
+        } else {
+            return 15;
+        }
+    }
+
+    // Call the detectDarkPatterns function when the page loads
+    window.onload = detectDarkPatterns;
+  </script>
+</body>
+</html>
+
